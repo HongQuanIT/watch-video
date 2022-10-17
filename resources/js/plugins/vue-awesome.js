@@ -1,0 +1,37 @@
+import Vue from "vue";
+import Icon from "vue-awesome/components/Icon";
+import "vue-awesome/icons/address-card";
+import "vue-awesome/icons/angle-double-right";
+import "vue-awesome/icons/arrow-left";
+import "vue-awesome/icons/arrow-right";
+import "vue-awesome/icons/bell";
+import "vue-awesome/icons/calendar";
+import "vue-awesome/icons/caret-down";
+import "vue-awesome/icons/caret-left";
+import "vue-awesome/icons/caret-right";
+import "vue-awesome/icons/caret-up";
+import "vue-awesome/icons/check";
+import "vue-awesome/icons/check-circle";
+import "vue-awesome/icons/chevron-down";
+import "vue-awesome/icons/chevron-left";
+import "vue-awesome/icons/chevron-right";
+import "vue-awesome/icons/chevron-up";
+import "vue-awesome/icons/circle";
+import "vue-awesome/icons/cog";
+import "vue-awesome/icons/copyright";
+import "vue-awesome/icons/ellipsis-h";
+import "vue-awesome/icons/ellipsis-v";
+import "vue-awesome/icons/eye";
+import "vue-awesome/icons/flag";
+import "vue-awesome/icons/heart";
+import "vue-awesome/icons/history";
+import "vue-awesome/icons/info-circle";
+import "vue-awesome/icons/question-circle";
+import "vue-awesome/icons/shopping-cart";
+import "vue-awesome/icons/star";
+import "vue-awesome/icons/thumbs-down";
+import "vue-awesome/icons/thumbs-up";
+import "vue-awesome/icons/university";
+import "vue-awesome/icons/home";
+
+Vue.component("v-icon", Icon)

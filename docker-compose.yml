@@ -1,0 +1,74 @@
+version: '3.3'
+services:
+  mysql:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - 3309:3306
+    volumes:
+      - datadb:/var/lib/mysql
+      - ./db:/db
+  mongodb:
+    image: mongo:latest
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - datamongodb:/data/db
+    ports:
+      - 27017:27017
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    restart: always
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: password
+      ME_CONFIG_MONGODB_SERVER: mongodb
+      ME_CONFIG_MONGODB_PORT: "27017"
+    ports:
+      - 8081:8081
+    depends_on:
+      - mongodb
+  phpmyadmin:
+    depends_on:
+      - mysql
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - 8091:80
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: password
+  nginx:
+    build: ./docker/nginx
+    restart: always
+    volumes:
+      - .:/var/www/html
+    ports:
+      - 8090:80
+  redis:
+    image: bitnami/redis:latest
+    restart: always
+    volumes:
+      - ./docker/redis:/data
+    ports:
+      - "${REDIS_PORT}:6379"
+  php:
+    build: ./docker/php
+    restart: always
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/var/www/html
+volumes:
+    datadb:
+    datamongodb:
+

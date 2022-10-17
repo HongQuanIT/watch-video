@@ -1,0 +1,7 @@
+{
+    "auth": {
+        "txt_sign_in": "Sign in",
+        "txt_password" : "Password",
+        "txt_email" : "Email address"
+    }
+}
